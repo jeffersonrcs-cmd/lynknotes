@@ -12,4 +12,10 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Guard: some browsers hit `process` in TanStack's client hydration when the define isn't applied.
+    define: {
+      "process.env.TSS_ROUTER_BASEPATH": JSON.stringify(""),
+    },
+  },
 });
