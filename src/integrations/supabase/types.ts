@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      notes: {
+        Row: {
+          archived: boolean
+          category: string
+          color: string
+          content: string
+          deleted: boolean
+          id: string
+          items: Json
+          kind: string
+          pinned: boolean
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          archived?: boolean
+          category?: string
+          color?: string
+          content?: string
+          deleted?: boolean
+          id?: string
+          items?: Json
+          kind?: string
+          pinned?: boolean
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          archived?: boolean
+          category?: string
+          color?: string
+          content?: string
+          deleted?: boolean
+          id?: string
+          items?: Json
+          kind?: string
+          pinned?: boolean
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,0 +1,6 @@
+CREATE TABLE public.notes (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), user_id uuid NOT NULL DEFAULT auth.uid(), title text NOT NULL DEFAULT '' CHECK (char_length(title) <= 150), content text NOT NULL DEFAULT '' CHECK (char_length(content) <= 20000), color text NOT NULL DEFAULT 'yellow' CHECK (color IN ('yellow','pink','green','blue','purple','peach')), kind text NOT NULL DEFAULT 'text' CHECK (kind IN ('text','checklist')), category text NOT NULL DEFAULT 'Pessoal' CHECK (char_length(category) <= 60), items jsonb NOT NULL DEFAULT '[]', pinned boolean NOT NULL DEFAULT false, archived boolean NOT NULL DEFAULT false, deleted boolean NOT NULL DEFAULT false, updated_at timestamptz NOT NULL DEFAULT now());
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.notes TO authenticated;
+GRANT ALL ON public.notes TO service_role;
+ALTER TABLE public.notes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users manage their own notes" ON public.notes FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+CREATE INDEX notes_owner_idx ON public.notes(user_id);
