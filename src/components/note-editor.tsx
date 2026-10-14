@@ -1,0 +1,24 @@
+import { useState } from 'react';
+import { Check, Plus, Trash2, X, Pin, AlignLeft, ListTodo } from 'lucide-react';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { colors, colorNames, type Note } from '@/lib/notes';
+
+export function NoteEditor({ note, onClose, onSave }: { note: Note | null; onClose: () => void; onSave: (note: Note) => Promise<void> }) {
+  return <Dialog open={!!note} onOpenChange={open => { if (!open) onClose(); }}><DialogContent className="editor-dialog p-0 gap-0 sm:max-w-[560px]" showCloseButton={false}>{note && <Editor key={note.id} initial={note} onClose={onClose} onSave={onSave}/>}</DialogContent></Dialog>;
+}
+function Editor({initial,onSave,onClose}:{initial:Note;onSave:(note:Note)=>Promise<void>;onClose:()=>void}) {
+  const [draft,setDraft] = useState(initial);
+  const [item,setItem] = useState('');
+  const [saving,setSaving] = useState(false);
+  const update = (patch:Partial<Note>)=>setDraft(old=>({...old,...patch}));
+  return <form onSubmit={async e=>{e.preventDefault();setSaving(true);try{await onSave({...draft,title:draft.title.trim() || 'Sem título',updated_at:new Date().toISOString()});onClose();}finally{setSaving(false);}}}>
+    <div className={`note-${draft.color} editor-paper p-7`}>
+      <div className="flex items-center justify-between mb-5"><DialogTitle className="text-xs font-semibold uppercase tracking-widest opacity-60">{initial.title ? 'Editar nota' : 'Uma nova ideia'}</DialogTitle><div className="flex gap-1"><Button type="button" variant="ghost" size="icon" aria-label="Fixar nota" className={draft.pinned?'bg-foreground/10':''} onClick={()=>update({pinned:!draft.pinned})}><Pin/></Button><Button type="button" variant="ghost" size="icon" aria-label="Fechar" onClick={onClose}><X/></Button></div></div>
+      <DialogDescription className="sr-only">Edite o título, o conteúdo e a cor da sua nota.</DialogDescription>
+      <input autoFocus aria-label="Título da nota" maxLength={150} placeholder="Dê um título à sua ideia..." className="w-full bg-transparent outline-none text-2xl font-semibold mb-5" value={draft.title} onChange={e=>update({title:e.target.value})}/>
+      {draft.kind==='text'?<textarea aria-label="Conteúdo da nota" maxLength={20000} placeholder="O que está na sua cabeça?" className="note-hand w-full min-h-56 bg-transparent outline-none resize-y" value={draft.content} onChange={e=>update({content:e.target.value})}/>:<div className="min-h-56 space-y-3">{draft.items.map((entry,i)=><div key={i} className="flex gap-3 items-center"><input aria-label={entry.text} type="checkbox" checked={entry.done} onChange={()=>update({items:draft.items.map((x,j)=>j===i?{...x,done:!x.done}:x)})}/><input aria-label={`Item ${i+1}`} value={entry.text} maxLength={500} className={`bg-transparent w-full outline-none ${entry.done?'line-through opacity-50':''}`} onChange={e=>update({items:draft.items.map((x,j)=>j===i?{...x,text:e.target.value}:x)})}/><Button aria-label={`Remover item ${i+1}`} type="button" variant="ghost" size="icon" onClick={()=>update({items:draft.items.filter((_,j)=>j!==i)})}><X/></Button></div>)}<div className="flex items-center gap-2"><Plus size={17}/><input aria-label="Novo item" placeholder="Adicionar item" className="bg-transparent outline-none w-full" value={item} maxLength={500} onChange={e=>setItem(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();if(item.trim()){update({items:[...draft.items,{text:item.trim(),done:false}]});setItem('');}}}}/><Button type="button" variant="ghost" size="icon" aria-label="Adicionar item" onClick={()=>{if(item.trim()){update({items:[...draft.items,{text:item.trim(),done:false}]});setItem('');}}}><Check/></Button></div></div>}
+    </div>
+    <div className="p-5 space-y-5"><div className="flex justify-between items-center"><div className="flex gap-2">{colors.map(c=><Button key={c} type="button" aria-label={colorNames[c]} title={colorNames[c]} variant="ghost" className={`color-swatch note-${c} ${draft.color===c?'swatch-selected':''}`} onClick={()=>update({color:c})}>{draft.color===c&&<Check size={14}/>}</Button>)}</div><div className="flex"><Button type="button" variant="ghost" size="icon" title="Texto" aria-label="Texto" onClick={()=>update({kind:'text'})}><AlignLeft/></Button><Button type="button" variant="ghost" size="icon" title="Lista" aria-label="Lista" onClick={()=>update({kind:'checklist'})}><ListTodo/></Button></div></div><div className="flex justify-between gap-3"><select aria-label="Categoria" className="bg-background text-sm border rounded-md px-3" value={draft.category} onChange={e=>update({category:e.target.value})}>{['Pessoal','Trabalho','Ideias'].map(x=><option key={x}>{x}</option>)}</select><Button disabled={saving} type="submit"><Check/>{saving?'Salvando...':'Salvar nota'}</Button></div></div>
+  </form>;
+}
