@@ -1,4 +1,5 @@
 # App de notas
-- [ ] Criar mural de notas coloridas, pesquisa, filtros e organização.
-- [ ] Implementar edição, listas, fixação, arquivo e lixeira.
-- [ ] Guardar notas privadas com login e verificar o fluxo completo.
+- [x] Criar mural de notas coloridas, pesquisa, filtros e organização.
+- [x] Implementar edição, listas, fixação, arquivo e lixeira.
+- [x] Implementar armazenamento privado e acesso por e-mail e Google.
+- [ ] Verificar criação e leitura de notas após login: aguarda a primeira conta confirmada, pois o projeto não tem usuários.
