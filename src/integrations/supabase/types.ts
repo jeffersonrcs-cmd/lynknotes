@@ -24,6 +24,7 @@ export type Database = {
           id: string
           items: Json
           kind: string
+          metadata: Json
           pinned: boolean
           title: string
           updated_at: string
@@ -38,6 +39,7 @@ export type Database = {
           id?: string
           items?: Json
           kind?: string
+          metadata?: Json
           pinned?: boolean
           title?: string
           updated_at?: string
@@ -52,6 +54,7 @@ export type Database = {
           id?: string
           items?: Json
           kind?: string
+          metadata?: Json
           pinned?: boolean
           title?: string
           updated_at?: string

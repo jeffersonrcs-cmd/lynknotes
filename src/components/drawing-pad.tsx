@@ -1,0 +1,15 @@
+import { useEffect, useRef, useState } from 'react';
+import { Eraser, Undo2, Trash2, Pencil } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+export function DrawingPad({value,onChange}:{value:string;onChange:(value:string)=>void}){
+ const canvas=useRef<HTMLCanvasElement>(null);
+ const drawing=useRef(false);
+ const history=useRef<string[]>([]);
+ const [ink,setInk]=useState('ink');
+ const [width,setWidth]=useState(4);
+ const [eraser,setEraser]=useState(false);
+ useEffect(()=>{const el=canvas.current;const ctx=el?.getContext('2d');if(!ctx||!el)return;ctx.clearRect(0,0,el.width,el.height);if(value){const img=new Image();img.onload=()=>ctx.drawImage(img,0,0,el.width,el.height);img.src=value;}},[value]);
+ function clear(){history.current.push(value);onChange('');}
+ return <div className="drawing-tool"><canvas ref={canvas} width={700} height={700} aria-label="Área de desenho" onPointerDown={e=>{const el=canvas.current;const ctx=el?.getContext('2d');if(!el||!ctx)return;history.current.push(el.toDataURL());drawing.current=true;el.setPointerCapture(e.pointerId);const r=el.getBoundingClientRect();ctx.beginPath();ctx.moveTo((e.clientX-r.left)*700/r.width,(e.clientY-r.top)*700/r.height);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=width*700/r.width;ctx.globalCompositeOperation=eraser?'destination-out':'source-over';ctx.strokeStyle=getComputedStyle(el).getPropertyValue(`--draw-${ink}`).trim();ctx.lineTo((e.clientX-r.left)*700/r.width+.1,(e.clientY-r.top)*700/r.height+.1);ctx.stroke();}} onPointerMove={e=>{if(!drawing.current)return;const el=canvas.current;const ctx=el?.getContext('2d');if(!el||!ctx)return;const r=el.getBoundingClientRect();ctx.lineTo((e.clientX-r.left)*700/r.width,(e.clientY-r.top)*700/r.height);ctx.stroke();}} onPointerUp={()=>{drawing.current=false;const el=canvas.current;if(el)onChange(el.toDataURL('image/png'));}} onPointerCancel={()=>{drawing.current=false;}}/>
+ <div className="draw-controls"><Button type="button" variant="ghost" size="icon" aria-label="Lápis" title="Lápis" onClick={()=>setEraser(false)} className={!eraser?'selected-tool':''}><Pencil/></Button><Button type="button" variant="ghost" size="icon" aria-label="Borracha" title="Borracha" onClick={()=>setEraser(true)} className={eraser?'selected-tool':''}><Eraser/></Button>{['ink','red','blue','green'].map(c=><Button key={c} type="button" variant="ghost" className={`ink-swatch ink-${c} ${ink===c?'selected-ink':''}`} aria-label={`Traço ${c}`} onClick={()=>{setInk(c);setEraser(false);}}/>)}<input type="range" aria-label="Espessura do traço" min="2" max="16" value={width} onChange={e=>setWidth(Number(e.target.value))}/><Button type="button" variant="ghost" size="icon" title="Desfazer" aria-label="Desfazer traço" onClick={()=>{const previous=history.current.pop();if(previous!==undefined)onChange(previous);}}><Undo2/></Button><Button type="button" variant="ghost" size="icon" title="Limpar desenho" aria-label="Limpar desenho" onClick={clear}><Trash2/></Button></div></div>;
+}

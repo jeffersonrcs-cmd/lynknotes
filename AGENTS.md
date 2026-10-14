@@ -12,3 +12,7 @@
 - Keep note models and sample content in `src/lib/notes.ts`, with editing isolated in `src/components/note-editor.tsx`, so the board and editor share one data contract.
 - Persist account-owned notes through the generated Cloud client with owner-scoped RLS; signed-out sample notes are explicitly temporary and never persisted as private user data.
 - Express note colors through global semantic CSS tokens, so all note surfaces and swatches stay consistent.
+- Store appearance and extended note kinds in the additive `notes.metadata` field while retaining legacy text/checklist kinds, so existing rows remain compatible.
+- Share `NoteContent` between the board and widget previews, and isolate canvas input in `DrawingPad`, so all five note formats render consistently.
+- Fetch bookmark metadata only through the fixed metadata-provider endpoint in `bookmark.functions.ts`, never by directly fetching user-supplied destinations, to prevent worker-side SSRF.
+- Lock Notes signs out the current account and hides the note board; it is not a cosmetic PIN overlay and requires account reauthentication.
