@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Check, Plus, Trash2, X, Pin, AlignLeft, ListTodo } from 'lucide-react';
+import { Check, Plus, X, Pin, AlignLeft, ListTodo } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { colors, colorNames, type Note } from '@/lib/notes';
 
 export function NoteEditor({ note, onClose, onSave }: { note: Note | null; onClose: () => void; onSave: (note: Note) => Promise<void> }) {
-  return <Dialog open={!!note} onOpenChange={open => { if (!open) onClose(); }}><DialogContent className="editor-dialog p-0 gap-0 sm:max-w-[560px]" showCloseButton={false}>{note && <Editor key={note.id} initial={note} onClose={onClose} onSave={onSave}/>}</DialogContent></Dialog>;
+  return <Dialog open={!!note} onOpenChange={open => { if (!open) onClose(); }}><DialogContent className="editor-dialog p-0 gap-0 sm:max-w-[560px]">{note && <Editor key={note.id} initial={note} onClose={onClose} onSave={onSave}/>}</DialogContent></Dialog>;
 }
 function Editor({initial,onSave,onClose}:{initial:Note;onSave:(note:Note)=>Promise<void>;onClose:()=>void}) {
   const [draft,setDraft] = useState(initial);
