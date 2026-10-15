@@ -35,10 +35,10 @@ jobs:
 
       - name: Prepare and validate static output
         run: |
-          test -s dist/index.html
-          cp dist/index.html dist/404.html
-          test -s dist/404.html
-          grep -q "/lynknotes/" dist/index.html
+          test -s .output/public/index.html
+          cp .output/public/index.html .output/public/404.html
+          test -s .output/public/404.html
+          grep -q "/lynknotes/" .output/public/index.html
           echo "SPA entry point and fallback validated."
           find dist -maxdepth 2 -type f | sort | head -80
 
@@ -48,6 +48,6 @@ jobs:
           personal_token: ${{ secrets.LYNKNOTES_PAGES_DEPLOY_TOKEN }}
           external_repository: JSLynk/lynknotes
           publish_branch: gh-pages
-          publish_dir: dist
+          publish_dir: .output/public
           force_orphan: true
           enable_jekyll: false
