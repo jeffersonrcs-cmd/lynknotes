@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - "version-history.json"
       - "VERSION_HISTORY.md"
+      - "public/version-history.json"
   workflow_dispatch:
 
 permissions:
@@ -42,11 +43,11 @@ jobs:
             MESSAGES="$(git log -1 --format=%B "$AFTER")"
           fi
 
-          if printf '%s\n' "$MESSAGES" | grep -Eiq 'BREAKING CHANGE:|BREAKING-CHANGE:|^[[:alnum:]_-]+(([^)]*))?!:'; then
+          if printf '%s\n' "$MESSAGES" | grep -Eiq 'BREAKING CHANGE:|BREAKING-CHANGE:|^[[:alnum:]_-]+(\([^)]*\))?!:'; then
             TYPE=major
-          elif printf '%s\n' "$MESSAGES" | grep -Eq '(^|\n)feat(([^)]*))?:'; then
+          elif printf '%s\n' "$MESSAGES" | grep -Eq '^feat(\([^)]*\))?:'; then
             TYPE=minor
-          elif printf '%s\n' "$MESSAGES" | grep -Eq '(^|\n)fix(([^)]*))?:'; then
+          elif printf '%s\n' "$MESSAGES" | grep -Eq '^fix(\([^)]*\))?:'; then
             TYPE=patch
           else
             TYPE=rev
@@ -80,8 +81,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json version-history.json VERSION_HISTORY.md src/lib/versionHistory.ts public/version-history.json
           git add -u
+          git add package.json
           if git diff --cached --quiet; then
             echo "No version changes to commit."
             exit 0
