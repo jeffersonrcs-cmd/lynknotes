@@ -2,6 +2,10 @@
 
 ## v1.0.0 — REV 38 (2026-10-15)
 
+- Corrigida a ausência do estado de destino do arraste, que causava erro ao tentar mover notas.
+
+## v1.0.0 — REV 38 (2026-10-15)
+
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
 ## v1.0.0 — REV 37 (2026-10-15)
