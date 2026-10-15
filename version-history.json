@@ -1,6 +1,15 @@
 [
   {
     "version": "1.0.0",
+    "revision": 45,
+    "date": "2026-10-15",
+    "title": "Arraste visual das notas no PWA",
+    "changes": [
+      "A nota acompanha visualmente o dedo durante o gesto de arrastar."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 44,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
