@@ -1,0 +1,13 @@
+[
+  {
+    "version": "1.0.0",
+    "revision": 1,
+    "date": "2026-10-14",
+    "title": "Versionamento inicial do LynkNotes",
+    "changes": [
+      "Criado versionamento semântico independente, com REV para revisões da mesma versão.",
+      "Adicionado histórico de versões em JSON e Markdown e comandos para incrementar major, minor, patch ou REV.",
+      "Adicionada área no aplicativo para consultar a versão atual e o histórico de evolução."
+    ]
+  }
+]
