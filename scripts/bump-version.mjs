@@ -33,8 +33,8 @@ const entry = {
   version: pkg.version,
   revision,
   date: today,
-  title: kind === "rev" ? "Revisão de manutenção" : "Atualização do LynkNotes",
-  changes: [kind === "rev" ? "Ajustes e correções registrados nesta revisão." : "Atualizações, melhorias e correções desta versão."]
+  title: kind === "rev" ? "Revisão de manutenção (REV obrigatório quando a versão não muda)" : "Atualização do LynkNotes",
+  changes: [kind === "rev" ? "Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH." : "Atualizações, melhorias e correções desta versão; o REV reinicia em 1 quando MAJOR.MINOR.PATCH muda."]
 };
 history.unshift(entry);
 writeFileSync(historyPath, JSON.stringify(history, null, 2) + "\n");
