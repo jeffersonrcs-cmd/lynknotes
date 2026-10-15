@@ -1,61 +1,90 @@
-name: Atualizar REV automaticamente
+name: Automatic semantic version and REV
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths-ignore:
+      - "version-history.json"
+      - "VERSION_HISTORY.md"
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: automatic-version-revision
+  group: automatic-version-policy-${{ github.repository }}
   cancel-in-progress: false
 
 jobs:
-  bump-revision:
+  version:
     if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar repositório
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Verificar versão e incrementar REV
+      - name: Classify commits and update version
+        id: bump
         shell: bash
         run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          CURRENT_REVISION=$(node -p "require('./package.json').revision || 0")
-          PREVIOUS_PACKAGE=$(git show "${{ github.event.before }}:package.json" 2>/dev/null || true)
-          PREVIOUS_VERSION=$(printf '%s' "$PREVIOUS_PACKAGE" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version||'')}catch{console.log('')}})")
-          PREVIOUS_REVISION=$(printf '%s' "$PREVIOUS_PACKAGE" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).revision||0)}catch{console.log(0)}})")
-          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
-            if [ "$CURRENT_REVISION" != "1" ]; then
-              node --input-type=module -e "import fs from 'node:fs'; const p=JSON.parse(fs.readFileSync('package.json','utf8')); p.revision=1; fs.writeFileSync('package.json',JSON.stringify(p,null,2)+String.fromCharCode(10))"
-              echo "A versão semântica mudou; REV definido como 1."
-            else
-              echo "Versão semântica mudou e REV já é 1."
-            fi
+          set -euo pipefail
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MESSAGES="$(git log -1 --format=%B)"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            MESSAGES="$(git log "$BEFORE..$AFTER" --format=%B)"
           else
-            npm run version:rev
+            MESSAGES="$(git log -1 --format=%B "$AFTER")"
           fi
 
-      - name: Salvar versão e histórico
-        shell: bash
-        run: |
-          if git diff --quiet; then
-            echo "Nenhuma alteração de versionamento para salvar."
+          if printf '%s\n' "$MESSAGES" | grep -Eiq 'BREAKING CHANGE:|BREAKING-CHANGE:|^[[:alnum:]_-]+(([^)]*))?!:'; then
+            TYPE=major
+          elif printf '%s\n' "$MESSAGES" | grep -Eq '(^|\n)feat(([^)]*))?:'; then
+            TYPE=minor
+          elif printf '%s\n' "$MESSAGES" | grep -Eq '(^|\n)fix(([^)]*))?:'; then
+            TYPE=patch
+          else
+            TYPE=rev
+          fi
+
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const previousRaw = (() => { try { return execFileSync('git', ['show', 'HEAD^:package.json'], { encoding: 'utf8' }); } catch { return null; } })();
+          if (previousRaw) {
+            const previous = JSON.parse(previousRaw);
+            if (pkg.version !== previous.version) {
+              if (pkg.revision !== 1) throw new Error('A versão mudou, mas REV não foi reiniciada em 1.');
+              fs.writeFileSync('/tmp/version-already-bumped', 'yes');
+            } else if (Number(pkg.revision ?? 1) !== Number(previous.revision ?? 1)) {
+              fs.writeFileSync('/tmp/version-already-bumped', 'yes');
+            }
+          }
+          NODE
+          if [ -f /tmp/version-already-bumped ]; then
+            echo "type=none" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "type=$TYPE" >> "$GITHUB_OUTPUT"
+          npm run "version:$TYPE"
+      - name: Commit version and history
+        if: steps.bump.outputs.type != 'none'
+        shell: bash
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json version-history.json VERSION_HISTORY.md
-          git commit -m "chore(version): atualizar REV automaticamente [skip ci]"
+          git add package.json version-history.json VERSION_HISTORY.md src/lib/versionHistory.ts public/version-history.json
+          git add -u
+          if git diff --cached --quiet; then
+            echo "No version changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(version): automatic version update [skip ci]"
           git push origin HEAD:main
