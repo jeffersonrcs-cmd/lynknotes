@@ -7,9 +7,9 @@ import { DrawingPad } from '@/components/drawing-pad';
 import { previewBookmark } from '@/lib/bookmark.functions';
 import { colors, colorNames, kindNames, noteClasses, type Note, type Appearance } from '@/lib/notes';
 export function NoteEditor({note,onClose,onSave,groups=['Pessoal','Trabalho','Ideias']}:{note:Note|null;onClose:()=>void;onSave:(note:Note)=>Promise<void>;groups?:string[]}){
- return <Dialog open={!!note} onOpenChange={open=>{if(!open)onClose();}}><DialogContent className="ios-editor">{note&&<Editor key={note.id} initial={note} onSave={onSave} onClose={onClose}/>}</DialogContent></Dialog>;
+ return <Dialog open={!!note} onOpenChange={open=>{if(!open)onClose();}}><DialogContent className="ios-editor">{note&&<Editor key={note.id} initial={note} onSave={onSave} onClose={onClose} groups={groups}/>}</DialogContent></Dialog>;
 }
-function Editor({initial,onSave,onClose}:{initial:Note;onSave:(note:Note)=>Promise<void>;onClose:()=>void}){
+function Editor({initial,onSave,onClose,groups}:{initial:Note;onSave:(note:Note)=>Promise<void>;onClose:()=>void;groups:string[]}){
  const [draft,setDraft]=useState(initial);const [item,setItem]=useState('');const [saving,setSaving]=useState(false);const [error,setError]=useState('');const [previewing,setPreviewing]=useState(false);
  const preview=useServerFn(previewBookmark);
  const update=(patch:Partial<Note>)=>setDraft(old=>({...old,...patch}));
