@@ -1,5 +1,9 @@
 # Histórico de versões do LynkNotes
 
+## v1.0.0 — REV 43 (2026-10-15)
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
 ## v1.0.0 — REV 42 (2026-10-15)
 
 - O gesto de arrastar passa a acompanhar o toque no documento após a pressão prolongada, permitindo mover notas no PWA.
