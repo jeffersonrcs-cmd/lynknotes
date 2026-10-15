@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Toaster, toast } from 'sonner';
 import { jslynkAuth } from '@/integrations/jslynk/client';
-import { deleteUserNote, listUserNotes, saveUserNote } from '@/lib/notes-server';
+import { deleteUserNote, listUserNotes, saveUserNote } from '@/lib/notes-client';
 import { NoteEditor } from '@/components/note-editor';
 import { NoteContent } from '@/components/note-content';
 import { WidgetPreview } from '@/components/widget-preview';
