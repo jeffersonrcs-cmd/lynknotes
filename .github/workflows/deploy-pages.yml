@@ -1,4 +1,4 @@
-name: Deploy LynkNotes to GitHub Pages
+name: Trigger LynkNotes GitHub Pages deployment
 
 on:
   push:
@@ -10,44 +10,22 @@ permissions:
   contents: read
 
 concurrency:
-  group: lynknotes-pages-deploy
-  cancel-in-progress: true
+  group: lynknotes-pages-dispatch
+  cancel-in-progress: false
 
 jobs:
-  build:
+  dispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source repository
-        uses: actions/checkout@v4
-
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Build SPA for GitHub Pages
-        run: bun run build
+      - name: Trigger deployment in JSLynk/lynknotes
         env:
-          VITE_BASE_PATH: /lynknotes/
-
-      - name: Prepare and validate static output
+          GH_TOKEN: ${{ secrets.LYNKNOTES_PAGES_DEPLOY_TOKEN }}
         run: |
-          test -s .output/public/index.html
-          cp .output/public/index.html .output/public/404.html
-          test -s .output/public/404.html
-          grep -q "/lynknotes/" .output/public/index.html
-          echo "SPA entry point and fallback validated."
-          find .output/public -maxdepth 2 -type f | sort | head -80
-
-      - name: Publish to JSLynk/lynknotes
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          personal_token: ${{ secrets.LYNKNOTES_PAGES_DEPLOY_TOKEN }}
-          external_repository: JSLynk/lynknotes
-          publish_branch: gh-pages
-          publish_dir: .output/public
-          force_orphan: true
-          enable_jekyll: false
+          test -n "$GH_TOKEN"
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --url https://api.github.com/repos/JSLynk/lynknotes/dispatches \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --data '{"event_type":"deploy-lynknotes"}'
