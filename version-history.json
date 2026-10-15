@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.1",
+    "revision": 1,
+    "date": "2026-10-15",
+    "title": "Atualização do LynkNotes",
+    "changes": [
+      "Atualizações, melhorias e correções desta versão; o REV reinicia em 1 quando MAJOR.MINOR.PATCH muda."
+    ]
+  },
+  {
     "version": "1.0.0",
     "revision": 50,
     "date": "2026-10-15",
