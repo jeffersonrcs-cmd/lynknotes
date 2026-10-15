@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   bump-revision:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
     steps:
       - name: Baixar repositório
@@ -28,26 +28,27 @@ jobs:
         with:
           node-version: 22
 
-      - name: Verificar se a versão semântica mudou
-        id: version
+      - name: Verificar versão e incrementar REV
         shell: bash
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          PREVIOUS_VERSION=$(git show "${{ github.event.before }}:package.json" 2>/dev/null | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version||'')}catch{console.log('')}})" || true)
-          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "previous=$PREVIOUS_VERSION" >> "$GITHUB_OUTPUT"
-          if [ "$CURRENT_VERSION" = "$PREVIOUS_VERSION" ]; then
-            echo "bump_revision=true" >> "$GITHUB_OUTPUT"
+          CURRENT_REVISION=$(node -p "require('./package.json').revision || 0")
+          PREVIOUS_PACKAGE=$(git show "${{ github.event.before }}:package.json" 2>/dev/null || true)
+          PREVIOUS_VERSION=$(printf '%s' "$PREVIOUS_PACKAGE" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version||'')}catch{console.log('')}})")
+          PREVIOUS_REVISION=$(printf '%s' "$PREVIOUS_PACKAGE" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).revision||0)}catch{console.log(0)}})")
+          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+            if [ "$CURRENT_REVISION" != "1" ]; then
+              node --input-type=module -e "import fs from 'node:fs'; const p=JSON.parse(fs.readFileSync('package.json','utf8')); p.revision=1; fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')"
+              echo "A versão semântica mudou; REV definido como 1."
+            else
+              echo "Versão semântica mudou e REV já é 1."
+            fi
           else
-            echo "bump_revision=false" >> "$GITHUB_OUTPUT"
+            npm run version:rev
           fi
 
-      - name: Incrementar REV e registrar no histórico
-        if: steps.version.outputs.bump_revision == 'true'
-        run: npm run version:rev
-
-      - name: Salvar REV no repositório
-        if: steps.version.outputs.bump_revision == 'true'
+      - name: Salvar versão e histórico
+        shell: bash
         run: |
           if git diff --quiet; then
             echo "Nenhuma alteração de versionamento para salvar."
@@ -56,5 +57,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package.json version-history.json VERSION_HISTORY.md
-          git commit -m "chore(version): incrementar REV automaticamente [skip ci]"
+          git commit -m "chore(version): atualizar REV automaticamente [skip ci]"
           git push origin HEAD:main
