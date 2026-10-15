@@ -1,6 +1,15 @@
 [
   {
     "version": "1.0.0",
+    "revision": 20,
+    "date": "2026-10-15",
+    "title": "Sincronização do histórico de migrations",
+    "changes": [
+      "Alinhado o identificador da migration do LynkNotes ao registro aplicado no Supabase central."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 19,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
