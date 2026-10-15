@@ -1,6 +1,15 @@
 [
   {
     "version": "1.0.0",
+    "revision": 49,
+    "date": "2026-10-15",
+    "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
+    "changes": [
+      "Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 48,
     "date": "2026-10-15",
     "title": "Novo ícone PWA do LynkNotes",

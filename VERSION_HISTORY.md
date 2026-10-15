@@ -1,5 +1,9 @@
 # Histórico de versões do LynkNotes
 
+## v1.0.0 — REV 49 (2026-10-15)
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
 ## v1.0.0 — REV 48 (2026-10-15)
 
 - Adicionado ícone estilizado com L e linhas de nota, manifesto PWA e metadados para instalação na tela inicial.
