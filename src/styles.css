@@ -174,3 +174,10 @@ body { font-family:var(--font-sans); letter-spacing:0; }button,input,textarea,se
 .group-edit input{flex:1;min-width:0;background:var(--muted);border:1px solid var(--border);border-radius:10px;padding:0 12px;height:38px;outline:none;color:var(--foreground);}
 .ios-note[draggable="true"]{cursor:grab}
 .ios-note.is-dragging{opacity:.55;transform:rotate(-3deg) scale(1.03)}
+.editor-top{position:sticky;top:0;z-index:5;padding:10px 12px;background:color-mix(in oklch,var(--card) 85%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.editor-top .editor-back{height:36px;gap:2px;padding:0 12px 0 6px;border-radius:999px;background:var(--muted);color:var(--foreground);font-size:15px;font-weight:600;}
+.editor-top .editor-back svg{width:20px;height:20px;}
+.editor-top .editor-kind{padding:5px 14px;border-radius:999px;color:var(--note-ink);font-size:14px;font-weight:700;box-shadow:var(--paper-shadow);}
+.editor-top .editor-save{height:36px;gap:5px;padding:0 16px;border-radius:999px;background:var(--primary);color:var(--primary-foreground);font-size:15px;font-weight:700;box-shadow:0 6px 16px -6px color-mix(in oklch,var(--primary) 60%,transparent);}
+.editor-top .editor-save:hover{background:var(--primary);filter:brightness(1.08);}
+.editor-top .editor-save svg{width:17px;height:17px;stroke-width:3;}
