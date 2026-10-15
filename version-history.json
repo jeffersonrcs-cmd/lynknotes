@@ -3,6 +3,15 @@
     "version": "1.0.0",
     "revision": 38,
     "date": "2026-10-15",
+    "title": "Correção do arraste de notas",
+    "changes": [
+      "Corrigida a ausência do estado de destino do arraste, que causava erro ao tentar mover notas."
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "revision": 38,
+    "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
     "changes": [
       "Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH."
