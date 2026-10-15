@@ -1,0 +1,60 @@
+name: Atualizar REV automaticamente
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: automatic-version-revision
+  cancel-in-progress: false
+
+jobs:
+  bump-revision:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verificar se a versão semântica mudou
+        id: version
+        shell: bash
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          PREVIOUS_VERSION=$(git show "${{ github.event.before }}:package.json" 2>/dev/null | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version||'')}catch{console.log('')}})" || true)
+          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "previous=$PREVIOUS_VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$CURRENT_VERSION" = "$PREVIOUS_VERSION" ]; then
+            echo "bump_revision=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "bump_revision=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Incrementar REV e registrar no histórico
+        if: steps.version.outputs.bump_revision == 'true'
+        run: npm run version:rev
+
+      - name: Salvar REV no repositório
+        if: steps.version.outputs.bump_revision == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma alteração de versionamento para salvar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json version-history.json VERSION_HISTORY.md
+          git commit -m "chore(version): incrementar REV automaticamente [skip ci]"
+          git push origin HEAD:main
