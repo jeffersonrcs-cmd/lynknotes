@@ -1,6 +1,15 @@
 [
   {
     "version": "1.0.0",
+    "revision": 48,
+    "date": "2026-10-15",
+    "title": "Novo ícone PWA do LynkNotes",
+    "changes": [
+      "Adicionado ícone estilizado com L e linhas de nota, manifesto PWA e metadados para instalação na tela inicial."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 47,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
