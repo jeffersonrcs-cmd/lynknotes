@@ -172,3 +172,5 @@ body { font-family:var(--font-sans); letter-spacing:0; }button,input,textarea,se
 .group-count{margin-left:auto;font-size:12px;color:var(--muted-foreground);}
 .group-edit{display:flex;gap:6px;flex:1;}
 .group-edit input{flex:1;min-width:0;background:var(--muted);border:1px solid var(--border);border-radius:10px;padding:0 12px;height:38px;outline:none;color:var(--foreground);}
+.ios-note[draggable="true"]{cursor:grab}
+.ios-note.is-dragging{opacity:.55;transform:rotate(-3deg) scale(1.03)}
