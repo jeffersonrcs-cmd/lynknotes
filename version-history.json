@@ -3,9 +3,10 @@
     "version": "1.0.0",
     "revision": 14,
     "date": "2026-10-15",
-    "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
+    "title": "Cadastro centralizado no portal JSLynk",
     "changes": [
-      "Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH."
+      "Removido cadastro local do LynkNotes; o botão Criar conta direciona ao portal oficial JSLynk.",
+      "Mantidos login, logout e recuperação de senha nas telas próprias do LynkNotes."
     ]
   },
   {
