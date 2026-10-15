@@ -1,6 +1,15 @@
 [
   {
     "version": "1.0.0",
+    "revision": 42,
+    "date": "2026-10-15",
+    "title": "Correção do arraste no PWA",
+    "changes": [
+      "O gesto de arrastar passa a acompanhar o toque no documento após a pressão prolongada, permitindo mover notas no PWA."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 41,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
