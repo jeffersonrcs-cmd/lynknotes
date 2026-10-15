@@ -1,6 +1,16 @@
 [
   {
     "version": "1.0.0",
+    "revision": 18,
+    "date": "2026-10-15",
+    "title": "Integração de notas com Supabase central",
+    "changes": [
+      "Criada a tabela notes no projeto central JSLynk com políticas RLS por usuário.",
+      "Conectadas as operações de carregar, salvar e excluir notas ao Supabase central."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 17,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
