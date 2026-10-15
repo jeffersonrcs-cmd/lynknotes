@@ -40,7 +40,7 @@ jobs:
           test -s .output/public/404.html
           grep -q "/lynknotes/" .output/public/index.html
           echo "SPA entry point and fallback validated."
-          find dist -maxdepth 2 -type f | sort | head -80
+          find .output/public -maxdepth 2 -type f | sort | head -80
 
       - name: Publish to JSLynk/lynknotes
         uses: peaceiris/actions-gh-pages@v4
