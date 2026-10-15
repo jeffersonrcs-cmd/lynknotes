@@ -1,5 +1,9 @@
 # Histórico de versões do LynkNotes
 
+## v1.0.0 — REV 3 (2026-10-15)
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
 ## v1.0.0 — REV 2 (2026-10-15)
