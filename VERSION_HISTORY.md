@@ -1,5 +1,9 @@
 # Histórico de versões do LynkNotes
 
+## v1.0.0 — REV 24 (2026-10-15)
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
 ## v1.0.0 — REV 23 (2026-10-15)
 
 - Configurada geração do shell SPA e fallback 404 para hospedagem estática.
