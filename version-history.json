@@ -1,6 +1,16 @@
 [
   {
     "version": "1.0.0",
+    "revision": 23,
+    "date": "2026-10-15",
+    "title": "Preparação para publicação no GitHub Pages",
+    "changes": [
+      "Configurada geração do shell SPA e fallback 404 para hospedagem estática.",
+      "Adicionado workflow de publicação no repositório JSLynk/lynknotes."
+    ]
+  },
+  {
+    "version": "1.0.0",
     "revision": 24,
     "date": "2026-10-15",
     "title": "Revisão de manutenção (REV obrigatório quando a versão não muda)",
