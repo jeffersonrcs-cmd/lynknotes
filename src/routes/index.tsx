@@ -35,6 +35,11 @@ function Index(){
  async function save(note:Note){let savedNote=note;if(user){if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(note.id))savedNote={...note,id:crypto.randomUUID()};try{await saveUserNote(savedNote);}catch(error){toast.error(error instanceof Error?error.message:'Não foi possível salvar.');throw error;}}setNotes(old=>old.some(n=>n.id===note.id)?old.map(n=>n.id===note.id?savedNote:n):[savedNote,...old]);toast.success(user?'Nota salva':'Nota salva nesta demonstração');}
  async function change(note:Note,patch:Partial<Note>){try{await save({...note,...patch,updated_at:new Date().toISOString()});}catch{}}
  async function remove(note:Note){if(!window.confirm('Excluir definitivamente?'))return;if(user){try{await deleteUserNote({data:{id:note.id}});}catch{toast.error('Não foi possível excluir.');return;}}setNotes(old=>old.filter(n=>n.id!==note.id));}
+ const rank=(id:string)=>order.indexOf(id);
+ function storeOrder(o:string[]){setOrder(o);localStorage.setItem('lynk-order',JSON.stringify(o));}
+ function fullOrder(){return [...notes].sort((a,b)=>rank(a.id)-rank(b.id)).map(n=>n.id);}
+ function moveNote(id:string,targetId:string){if(id===targetId)return;const o=fullOrder().filter(x=>x!==id);const i=o.indexOf(targetId);o.splice(i<0?o.length:i,0,id);storeOrder(o);}
+ function shift(id:string,dir:-1|1){const list=visible.map(n=>n.id);const i=list.indexOf(id);const t=list[i+dir];if(!t)return;const o=fullOrder().filter(x=>x!==id);const ti=o.indexOf(t);o.splice(dir<0?ti:ti+1,0,id);storeOrder(o);}
  const visible=notes.filter(n=>(view==='Lixeira'?n.deleted:!n.deleted)&&(view==='Arquivadas'?n.archived:view==='Lixeira'||!n.archived)&&(view!=='Fixadas'||n.pinned)&&(category==='Todas'||n.category===category)&&(!kind||n.kind===kind)&&`${n.title} ${n.content} ${n.items.map(i=>i.text).join(' ')}`.toLowerCase().includes(query.toLowerCase()));
  function create(type:NoteKind){setChoose(false);setEditor(newNote(type==='checklist'?'green':type==='reminder'?'pink':type==='draw'?'peach':type==='bookmark'?'blue':'yellow',type));}
  return <div className="ios-app"><Toaster position="bottom-center" richColors/>
