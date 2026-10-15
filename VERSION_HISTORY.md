@@ -1,5 +1,9 @@
 # Histórico de versões do LynkNotes
 
+## v1.0.0 — REV 41 (2026-10-15)
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
 ## v1.0.0 — REV 40 (2026-10-15)
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
