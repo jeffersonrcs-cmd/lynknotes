@@ -25,7 +25,7 @@ const RANK = { patch: 0, minor: 1, major: 2 };
 
 const USAGE = `Uso:
   node scripts/bump-version.mjs <patch|minor|major> "O que mudou" ["Outra mudança" ...] [--title "Título"] [--dry-run]
-  node scripts/bump-version.mjs auto --before <sha> [--message "mensagem do commit"] [--dry-run]
+  node scripts/bump-version.mjs auto --before <sha> [--after <sha>] [--message "mensagem do commit"] [--dry-run]
   node scripts/bump-version.mjs check
   node scripts/bump-version.mjs regenerate`;
 
@@ -105,11 +105,12 @@ function nextVersion(current, kind) {
 }
 
 function parseArgs(args) {
-  const out = { positionals: [], title: undefined, before: undefined, message: undefined, dryRun: false };
+  const out = { positionals: [], title: undefined, before: undefined, after: undefined, message: undefined, dryRun: false };
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === "--title") out.title = args[++i];
     else if (a === "--before") out.before = args[++i];
+    else if (a === "--after") out.after = args[++i];
     else if (a === "--message") out.message = args[++i];
     else if (a === "--dry-run") out.dryRun = true;
     else if (a.startsWith("--")) fail(`opção desconhecida: ${a}\n${USAGE}`);
@@ -121,20 +122,20 @@ function parseArgs(args) {
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" });
 const validSha = (s) => Boolean(s) && !/^0+$/.test(s);
 
-function changedFiles(before) {
+function changedFiles(before, after) {
   if (!validSha(before)) return null;
   try {
-    return git("diff", "--name-only", before, "HEAD").split("\n").filter(Boolean);
+    return git("diff", "--name-only", before, after).split("\n").filter(Boolean);
   } catch {
     return null;
   }
 }
 
 // Só entram commits que mexeram em pastas do app (README, workflows etc. ficam de fora).
-function commitList(before) {
+function commitList(before, after) {
   if (!validSha(before)) return null;
   try {
-    const out = git("log", "--no-merges", "--reverse", "--format=%h%x1f%B%x00", `${before}..HEAD`, "--", ...APP_PATHS);
+    const out = git("log", "--no-merges", "--reverse", "--format=%h%x1f%B%x00", `${before}..${after}`, "--", ...APP_PATHS);
     const list = out
       .split("\0")
       .map((chunk) => chunk.trim())
@@ -215,16 +216,18 @@ if (mode === "check") {
   save(history, pkg);
   console.log("VERSION_HISTORY.md regenerado.");
 } else if (mode === "auto") {
-  const files = changedFiles(opts.before);
+  // --after limita o intervalo ao push que disparou o workflow (padrão: HEAD).
+  const after = validSha(opts.after) ? opts.after : "HEAD";
+  const files = changedFiles(opts.before, after);
   if (files) {
     if (files.includes("version-history.json")) skip("o histórico já foi alterado neste push.");
     if (!files.some((f) => APP_PATHS.some((p) => f.startsWith(p)))) skip("nenhum arquivo do app mudou.");
   }
   let headSha = "desconhecido";
   try {
-    headSha = git("rev-parse", "--short", "HEAD").trim();
+    headSha = git("rev-parse", "--short", after).trim();
   } catch {}
-  const commits = commitList(opts.before) ?? (opts.message ? [{ sha: headSha, message: opts.message }] : []);
+  const commits = commitList(opts.before, after) ?? (opts.message ? [{ sha: headSha, message: opts.message }] : []);
   const usable = commits.filter(
     (c) => !SKIP_MARKERS.test(c.message) && !/^Merge (branch|pull request|remote-tracking)/i.test(c.message)
   );
