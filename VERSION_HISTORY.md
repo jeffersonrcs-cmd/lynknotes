@@ -1,212 +1,326 @@
 # Histórico de versões do LynkNotes
 
-## v1.0.1 — REV 1 (2026-10-15)
+Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
+
+## v1.0.52 (2026-10-15)
+
+**Atualização do LynkNotes**
 
 - Atualizações, melhorias e correções desta versão; o REV reinicia em 1 quando MAJOR.MINOR.PATCH muda.
 
-## v1.0.0 — REV 50 (2026-10-15)
+## v1.0.51 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 49 (2026-10-15)
+## v1.0.50 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 48 (2026-10-15)
+## v1.0.49 (2026-10-15)
+
+**Novo ícone PWA do LynkNotes**
 
 - Adicionado ícone estilizado com L e linhas de nota, manifesto PWA e metadados para instalação na tela inicial.
 
-## v1.0.0 — REV 47 (2026-10-15)
+## v1.0.48 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 46 (2026-10-15)
+## v1.0.47 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 45 (2026-10-15)
+## v1.0.46 (2026-10-15)
+
+**Arraste visual das notas no PWA**
 
 - A nota acompanha visualmente o dedo durante o gesto de arrastar.
 
-## v1.0.0 — REV 44 (2026-10-15)
+## v1.0.45 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 43 (2026-10-15)
+## v1.0.44 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 42 (2026-10-15)
+## v1.0.43 (2026-10-15)
+
+**Correção do arraste no PWA**
 
 - O gesto de arrastar passa a acompanhar o toque no documento após a pressão prolongada, permitindo mover notas no PWA.
 
-## v1.0.0 — REV 41 (2026-10-15)
+## v1.0.42 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 40 (2026-10-15)
+## v1.0.41 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 39 (2026-10-15)
+## v1.0.40 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 38 (2026-10-15)
+## v1.0.39 (2026-10-15)
+
+**Correção do arraste de notas**
 
 - Corrigida a ausência do estado de destino do arraste, que causava erro ao tentar mover notas.
 
-## v1.0.0 — REV 37 (2026-10-15)
+## v1.0.38 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 36 (2026-10-15)
+## v1.0.37 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 35 (2026-10-15)
+## v1.0.36 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 34 (2026-10-15)
+## v1.0.35 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 33 (2026-10-15)
+## v1.0.34 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 32 (2026-10-15)
+## v1.0.33 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 31 (2026-10-15)
+## v1.0.32 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 30 (2026-10-15)
+## v1.0.31 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 29 (2026-10-15)
+## v1.0.30 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 28 (2026-10-15)
+## v1.0.29 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 27 (2026-10-15)
+## v1.0.28 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 26 (2026-10-15)
+## v1.0.27 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 25 (2026-10-15)
+## v1.0.26 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 24 (2026-10-15)
+## v1.0.25 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 23 (2026-10-15)
+## v1.0.24 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
+
+- Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
+
+## v1.0.23 (2026-10-15)
+
+**Preparação para publicação no GitHub Pages**
 
 - Configurada geração do shell SPA e fallback 404 para hospedagem estática.
 - Adicionado workflow de publicação no repositório JSLynk/lynknotes.
 
-## v1.0.0 — REV 24 (2026-10-15)
+## v1.0.22 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 23 (2026-10-15)
+## v1.0.21 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 22 (2026-10-15)
+## v1.0.20 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 21 (2026-10-15)
+## v1.0.19 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 19 (2026-10-15)
+## v1.0.18 (2026-10-15)
+
+**Sincronização do histórico de migrations**
+
+- Alinhado o identificador da migration do LynkNotes ao registro aplicado no Supabase central.
+
+## v1.0.17 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 18 (2026-10-15)
+## v1.0.16 (2026-10-15)
 
-- Criada a tabela `notes` no Supabase central JSLynk com políticas RLS por usuário.
+**Integração de notas com Supabase central**
+
+- Criada a tabela notes no projeto central JSLynk com políticas RLS por usuário.
 - Conectadas as operações de carregar, salvar e excluir notas ao Supabase central.
 
-## v1.0.0 — REV 17 (2026-10-15)
+## v1.0.15 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 16 (2026-10-15)
+## v1.0.14 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 15 (2026-10-15)
+## v1.0.13 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 14 (2026-10-15)
+## v1.0.12 (2026-10-15)
+
+**Cadastro centralizado no portal JSLynk**
+
+- Removido cadastro local do LynkNotes; o botão Criar conta direciona ao portal oficial JSLynk.
+- Mantidos login, logout e recuperação de senha nas telas próprias do LynkNotes.
+
+## v1.0.11 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 13 (2026-10-15)
+## v1.0.10 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 11 (2026-10-15)
+## v1.0.9 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 10 (2026-10-15)
+## v1.0.8 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 9 (2026-10-15)
+## v1.0.7 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 8 (2026-10-15)
+## v1.0.6 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 7 (2026-10-15)
+## v1.0.5 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 6 (2026-10-15)
+## v1.0.4 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 5 (2026-10-15)
+## v1.0.3 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 4 (2026-10-15)
+## v1.0.2 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-## v1.0.0 — REV 3 (2026-10-15)
+## v1.0.1 (2026-10-15)
+
+**Revisão de manutenção (REV obrigatório quando a versão não muda)**
 
 - Revisão incrementada para registrar alterações sem mudança de MAJOR.MINOR.PATCH.
 
-Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
+## v1.0.0 (2026-10-14)
 
-## v1.0.0 — REV 2 (2026-10-15)
-
-- Simplificada a apresentação da versão atual para evitar informação duplicada.
-- Adicionado botão para consultar o histórico completo de versões.
-
-## v1.0.0 — REV 1 (2026-10-14)
+**Versionamento inicial do LynkNotes**
 
 - Criado versionamento semântico independente, com REV para revisões da mesma versão.
-- Adicionado histórico de versões e comandos para atualizar major, minor, patch ou REV.
+- Adicionado histórico de versões em JSON e Markdown e comandos para incrementar major, minor, patch ou REV.
 - Adicionada área no aplicativo para consultar a versão atual e o histórico de evolução.
