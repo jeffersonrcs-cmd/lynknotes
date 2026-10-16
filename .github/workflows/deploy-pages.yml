@@ -1,7 +1,11 @@
 name: Trigger LynkNotes GitHub Pages deployment
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Automatic semantic version
+    types:
+      - completed
     branches:
       - main
   workflow_dispatch:
@@ -15,12 +19,14 @@ concurrency:
 
 jobs:
   dispatch:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Trigger deployment in JSLynk/lynknotes
         env:
           GH_TOKEN: ${{ secrets.LYNKNOTES_PAGES_DEPLOY_TOKEN }}
         run: |
+          set -euo pipefail
           test -n "$GH_TOKEN"
           curl --fail-with-body --silent --show-error \
             --request POST \
