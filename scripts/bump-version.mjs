@@ -10,8 +10,13 @@ const paths = {
   markdown: resolve(root, "VERSION_HISTORY.md"),
 };
 
-// Pastas do app: só mudanças nelas geram versão automática.
-const APP_PATHS = ["src/", "public/", "supabase/", "drizzle/"];
+// Artefatos do histórico são gerados pelo próprio script e não devem disparar outra versão.
+const VERSION_ARTIFACTS = new Set([
+  "version-history.json",
+  "VERSION_HISTORY.md",
+  "public/version-history.json",
+]);
+const isVersionedFile = (file) => !VERSION_ARTIFACTS.has(file);
 const SKIP_MARKERS = /\[(skip ci|sem-versao|auto-versao)\]/i;
 const MIN_LEN = 12;
 const PLACEHOLDERS = [
@@ -133,11 +138,12 @@ function changedFiles(before, after) {
   }
 }
 
-// Só entram commits que mexeram em pastas do app (README, workflows etc. ficam de fora).
+// Considera commits em todo o repositório, inclusive código, configuração e workflows.
+// Os arquivos de histórico gerados automaticamente são excluídos para evitar ciclos.
 function commitList(before, after) {
   if (!validSha(before)) return null;
   try {
-    const out = git("log", "--no-merges", "--reverse", "--format=%h%x1f%B%x00", `${before}..${after}`, "--", ...APP_PATHS);
+    const out = git("log", "--no-merges", "--reverse", "--format=%H%x1f%B%x00", `${before}..${after}`);
     const list = out
       .split("\0")
       .map((chunk) => chunk.trim())
@@ -146,7 +152,17 @@ function commitList(before, after) {
         const [sha, ...rest] = chunk.split("\x1f");
         return { sha: sha.trim(), message: rest.join("\x1f").trim() };
       });
-    return list.length ? list : null;
+    const eligible = list.filter((commit) => {
+      try {
+        const files = git("diff-tree", "--no-commit-id", "--name-only", "-r", commit.sha)
+          .split("\n")
+          .filter(Boolean);
+        return files.some(isVersionedFile);
+      } catch {
+        return false;
+      }
+    });
+    return eligible.length ? eligible : null;
   } catch {
     return null;
   }
@@ -221,8 +237,8 @@ if (mode === "check") {
   // --after limita o intervalo ao push que disparou o workflow (padrão: HEAD).
   const after = validSha(opts.after) ? opts.after : "HEAD";
   const files = changedFiles(opts.before, after);
-  if (files && !files.some((f) => APP_PATHS.some((p) => f.startsWith(p)))) {
-    skip("nenhum arquivo do app mudou desde a última versão.");
+  if (files && !files.some(isVersionedFile)) {
+    skip("nenhum arquivo alterado além dos históricos gerados automaticamente.");
   }
   let headSha = "desconhecido";
   try {
