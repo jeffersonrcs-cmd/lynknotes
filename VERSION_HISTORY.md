@@ -2,6 +2,16 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.54 (2026-10-16)
+
+- Run Pages deployment after version workflow
+- Remove obsolete REV command
+- Use stable UTC dates in history
+- Avoid duplicate dispatch for version commits
+- Validate history before automatic bump
+- Align validation with JSLynk
+- Detect repository-wide changes
+
 ## v1.0.53 (2026-10-16)
 
 - Import missing ChevronLeft icon
