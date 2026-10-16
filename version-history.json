@@ -5,8 +5,7 @@
     "title": "Atualização do LynkNotes",
     "changes": [
       "Atualizações, melhorias e correções desta versão"
-    ],
-    "legacy": "v1.0.1 REV 1"
+    ]
   },
   {
     "version": "1.0.51",
@@ -14,8 +13,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 50"
+    ]
   },
   {
     "version": "1.0.50",
@@ -23,8 +21,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 49"
+    ]
   },
   {
     "version": "1.0.49",
@@ -32,8 +29,7 @@
     "title": "Novo ícone PWA do LynkNotes",
     "changes": [
       "Adicionado ícone estilizado com L e linhas de nota, manifesto PWA e metadados para instalação na tela inicial."
-    ],
-    "legacy": "v1.0.0 REV 48"
+    ]
   },
   {
     "version": "1.0.48",
@@ -41,8 +37,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 47"
+    ]
   },
   {
     "version": "1.0.47",
@@ -50,8 +45,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 46"
+    ]
   },
   {
     "version": "1.0.46",
@@ -59,8 +53,7 @@
     "title": "Arraste visual das notas no PWA",
     "changes": [
       "A nota acompanha visualmente o dedo durante o gesto de arrastar."
-    ],
-    "legacy": "v1.0.0 REV 45"
+    ]
   },
   {
     "version": "1.0.45",
@@ -68,8 +61,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 44"
+    ]
   },
   {
     "version": "1.0.44",
@@ -77,8 +69,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 43"
+    ]
   },
   {
     "version": "1.0.43",
@@ -86,8 +77,7 @@
     "title": "Correção do arraste no PWA",
     "changes": [
       "O gesto de arrastar passa a acompanhar o toque no documento após a pressão prolongada, permitindo mover notas no PWA."
-    ],
-    "legacy": "v1.0.0 REV 42"
+    ]
   },
   {
     "version": "1.0.42",
@@ -95,8 +85,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 41"
+    ]
   },
   {
     "version": "1.0.41",
@@ -104,8 +93,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 40"
+    ]
   },
   {
     "version": "1.0.40",
@@ -113,8 +101,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 39"
+    ]
   },
   {
     "version": "1.0.39",
@@ -122,8 +109,7 @@
     "title": "Correção do arraste de notas",
     "changes": [
       "Corrigida a ausência do estado de destino do arraste, que causava erro ao tentar mover notas."
-    ],
-    "legacy": "v1.0.0 REV 38"
+    ]
   },
   {
     "version": "1.0.38",
@@ -131,8 +117,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 38"
+    ]
   },
   {
     "version": "1.0.37",
@@ -140,8 +125,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 37"
+    ]
   },
   {
     "version": "1.0.36",
@@ -149,8 +133,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 36"
+    ]
   },
   {
     "version": "1.0.35",
@@ -158,8 +141,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 35"
+    ]
   },
   {
     "version": "1.0.34",
@@ -167,8 +149,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 34"
+    ]
   },
   {
     "version": "1.0.33",
@@ -176,8 +157,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 33"
+    ]
   },
   {
     "version": "1.0.32",
@@ -185,8 +165,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 32"
+    ]
   },
   {
     "version": "1.0.31",
@@ -194,8 +173,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 31"
+    ]
   },
   {
     "version": "1.0.30",
@@ -203,8 +181,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 30"
+    ]
   },
   {
     "version": "1.0.29",
@@ -212,8 +189,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 29"
+    ]
   },
   {
     "version": "1.0.28",
@@ -221,8 +197,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 28"
+    ]
   },
   {
     "version": "1.0.27",
@@ -230,8 +205,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 27"
+    ]
   },
   {
     "version": "1.0.26",
@@ -239,8 +213,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 26"
+    ]
   },
   {
     "version": "1.0.25",
@@ -248,8 +221,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 25"
+    ]
   },
   {
     "version": "1.0.24",
@@ -257,8 +229,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 24"
+    ]
   },
   {
     "version": "1.0.23",
@@ -267,8 +238,7 @@
     "changes": [
       "Configurada geração do shell SPA e fallback 404 para hospedagem estática.",
       "Adicionado workflow de publicação no repositório JSLynk/lynknotes."
-    ],
-    "legacy": "v1.0.0 REV 23"
+    ]
   },
   {
     "version": "1.0.22",
@@ -276,8 +246,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 24"
+    ]
   },
   {
     "version": "1.0.21",
@@ -285,8 +254,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 23"
+    ]
   },
   {
     "version": "1.0.20",
@@ -294,8 +262,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 22"
+    ]
   },
   {
     "version": "1.0.19",
@@ -303,8 +270,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 21"
+    ]
   },
   {
     "version": "1.0.18",
@@ -312,8 +278,7 @@
     "title": "Sincronização do histórico de migrations",
     "changes": [
       "Alinhado o identificador da migration do LynkNotes ao registro aplicado no Supabase central."
-    ],
-    "legacy": "v1.0.0 REV 20"
+    ]
   },
   {
     "version": "1.0.17",
@@ -321,8 +286,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 19"
+    ]
   },
   {
     "version": "1.0.16",
@@ -331,8 +295,7 @@
     "changes": [
       "Criada a tabela notes no projeto central JSLynk com políticas RLS por usuário.",
       "Conectadas as operações de carregar, salvar e excluir notas ao Supabase central."
-    ],
-    "legacy": "v1.0.0 REV 18"
+    ]
   },
   {
     "version": "1.0.15",
@@ -340,8 +303,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 17"
+    ]
   },
   {
     "version": "1.0.14",
@@ -349,8 +311,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 16"
+    ]
   },
   {
     "version": "1.0.13",
@@ -358,8 +319,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 15"
+    ]
   },
   {
     "version": "1.0.12",
@@ -368,8 +328,7 @@
     "changes": [
       "Removido cadastro local do LynkNotes; o botão Criar conta direciona ao portal oficial JSLynk.",
       "Mantidos login, logout e recuperação de senha nas telas próprias do LynkNotes."
-    ],
-    "legacy": "v1.0.0 REV 14"
+    ]
   },
   {
     "version": "1.0.11",
@@ -377,8 +336,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 13"
+    ]
   },
   {
     "version": "1.0.10",
@@ -386,8 +344,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 11"
+    ]
   },
   {
     "version": "1.0.9",
@@ -395,8 +352,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 10"
+    ]
   },
   {
     "version": "1.0.8",
@@ -404,8 +360,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 9"
+    ]
   },
   {
     "version": "1.0.7",
@@ -413,8 +368,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 8"
+    ]
   },
   {
     "version": "1.0.6",
@@ -422,8 +376,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 7"
+    ]
   },
   {
     "version": "1.0.5",
@@ -431,8 +384,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 6"
+    ]
   },
   {
     "version": "1.0.4",
@@ -440,8 +392,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 5"
+    ]
   },
   {
     "version": "1.0.3",
@@ -449,8 +400,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 4"
+    ]
   },
   {
     "version": "1.0.2",
@@ -458,8 +408,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 3"
+    ]
   },
   {
     "version": "1.0.1",
@@ -467,8 +416,7 @@
     "title": "Manutenção e melhorias internas",
     "changes": [
       "Ajustes internos e manutenção do aplicativo."
-    ],
-    "legacy": "v1.0.0 REV 2"
+    ]
   },
   {
     "version": "1.0.0",
@@ -477,7 +425,6 @@
     "changes": [
       "Criado versionamento semântico independente e histórico de versões em JSON e Markdown.",
       "Adicionada área no aplicativo para consultar a versão atual e o histórico de evolução."
-    ],
-    "legacy": "v1.0.0 REV 1"
+    ]
   }
 ]
