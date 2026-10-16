@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.0.58",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T14:46:18.188Z",
+    "title": "Add dedicated semantic versioning tests",
+    "changes": [
+      "Add dedicated semantic versioning tests",
+      "Expose dedicated versioning test command",
+      "Run dedicated versioning tests",
+      "Ensure generated-history fixture changes",
+      "Isolate generated history changes"
+    ]
+  },
+  {
     "version": "1.0.57",
     "date": "2026-10-16",
     "timestamp": "2026-10-16T13:05:58.742Z",

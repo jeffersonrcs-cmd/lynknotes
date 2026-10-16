@@ -2,6 +2,14 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.58 (2026-10-16)
+
+- Add dedicated semantic versioning tests
+- Expose dedicated versioning test command
+- Run dedicated versioning tests
+- Ensure generated-history fixture changes
+- Isolate generated history changes
+
 ## v1.0.57 (2026-10-16)
 
 - Align semantic versioning behavior and tests
