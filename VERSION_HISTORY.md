@@ -321,6 +321,5 @@ Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNote
 
 **Versionamento inicial do LynkNotes**
 
-- Criado versionamento semântico independente, com REV para revisões da mesma versão.
-- Adicionado histórico de versões em JSON e Markdown e comandos para incrementar major, minor, patch ou REV.
+- Criado versionamento semântico independente e histórico de versões em JSON e Markdown.
 - Adicionada área no aplicativo para consultar a versão atual e o histórico de evolução.
