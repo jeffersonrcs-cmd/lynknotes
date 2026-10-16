@@ -1,4 +1,4 @@
-name: Automatic semantic version and REV
+name: Automatic semantic version
 
 on:
   push:
@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   version:
-    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip ci]')
+    if: github.actor != 'github-actions[bot]' && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,64 +28,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Classify commits and update version
-        id: bump
+      - name: Detect changes since the last recorded version
+        id: range
         shell: bash
         run: |
           set -euo pipefail
-          BEFORE="${{ github.event.before }}"
-          AFTER="${{ github.event.after }}"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            MESSAGES="$(git log -1 --format=%B)"
-          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
-            MESSAGES="$(git log "$BEFORE..$AFTER" --format=%B)"
-          else
-            MESSAGES="$(git log -1 --format=%B "$AFTER")"
+          BEFORE="$(git log -1 --format=%H -- version-history.json)"
+          AFTER="$(git rev-parse HEAD)"
+          if [ -z "$BEFORE" ]; then
+            BEFORE="$(git rev-list --max-parents=0 HEAD | tail -n 1)"
           fi
-
-          if printf '%s\n' "$MESSAGES" | grep -Eiq 'BREAKING CHANGE:|BREAKING-CHANGE:|^[[:alnum:]_-]+(\([^)]*\))?!:'; then
-            TYPE=major
-          elif printf '%s\n' "$MESSAGES" | grep -Eq '^feat(\([^)]*\))?:'; then
-            TYPE=minor
-          elif printf '%s\n' "$MESSAGES" | grep -Eq '^fix(\([^)]*\))?:'; then
-            TYPE=patch
-          else
-            TYPE=rev
-          fi
-
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import { execFileSync } from 'node:child_process';
-          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-          const previousRaw = (() => { try { return execFileSync('git', ['show', 'HEAD^:package.json'], { encoding: 'utf8' }); } catch { return null; } })();
-          if (previousRaw) {
-            const previous = JSON.parse(previousRaw);
-            if (pkg.version !== previous.version) {
-              if (pkg.revision !== 1) throw new Error('A versão mudou, mas REV não foi reiniciada em 1.');
-              fs.writeFileSync('/tmp/version-already-bumped', 'yes');
-            } else if (Number(pkg.revision ?? 1) !== Number(previous.revision ?? 1)) {
-              fs.writeFileSync('/tmp/version-already-bumped', 'yes');
-            }
-          }
-          NODE
-          if [ -f /tmp/version-already-bumped ]; then
-            echo "type=none" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "type=$TYPE" >> "$GITHUB_OUTPUT"
-          npm run "version:$TYPE"
+          echo "before=$BEFORE" >> "$GITHUB_OUTPUT"
+          echo "after=$AFTER" >> "$GITHUB_OUTPUT"
+      - name: Calculate and validate semantic version
+        run: node scripts/bump-version.mjs auto --before "${{ steps.range.outputs.before }}" --after "${{ steps.range.outputs.after }}"
       - name: Commit version and history
-        if: steps.bump.outputs.type != 'none'
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -u
-          git add package.json
+          git add package.json version-history.json VERSION_HISTORY.md
           if git diff --cached --quiet; then
             echo "No version changes to commit."
             exit 0
           fi
-          git commit -m "chore(version): automatic version update [skip ci]"
+          git commit -m "chore(version): automatic semantic version [skip ci]"
           git push origin HEAD:main
