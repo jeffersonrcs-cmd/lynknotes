@@ -64,6 +64,7 @@ function validate(history) {
     if (!parseVersion(e.version)) errors.push(`${n}: versão inválida (${e.version}).`);
     if ("revision" in e) errors.push(`${n} (v${e.version}): o campo "revision" não é mais usado.`);
     if (!Array.isArray(e.changes) || e.changes.length === 0) errors.push(`${n}: sem lista "changes".`);
+    else if (e.changes.some((change) => typeof change !== "string" || !change.trim())) errors.push(`${n}: há uma alteração vazia ou inválida.`);
     if (seen.has(e.version)) errors.push(`v${e.version} aparece mais de uma vez.`);
     seen.add(e.version);
   });
@@ -78,6 +79,7 @@ function validate(history) {
 
 function validatePackage(history, pkg) {
   const errors = [];
+  if (!parseVersion(pkg.version)) errors.push("package.json contém uma versão semântica inválida.");
   if ("revision" in pkg) errors.push('package.json ainda tem o campo "revision".');
   if (pkg.version !== history[0].version) {
     errors.push(`package.json (v${pkg.version}) diverge do histórico (v${history[0].version}).`);
