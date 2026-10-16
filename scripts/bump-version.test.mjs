@@ -75,12 +75,14 @@ test("prevalece o maior impacto entre vários commits do intervalo", () => {
 });
 
 test("históricos gerados não disparam uma nova versão", () => {
-  const { root, before } = fixture([["chore: initial fixture", "generated"]]);
+  // O intervalo deve conter apenas mudanças nos artefatos gerados.
+  const { root, before } = fixture([]);
   writeFileSync(join(root, "version-history.json"), JSON.stringify(
     [{ version: "1.0.0", date: "2026-01-01", title: "Initial", changes: ["Initial version established"] }], null, 2,
-  ) + "\n ");
-  git(root, "add", "version-history.json");
-  git(root, "commit", "-m", "chore(version): update generated history [skip ci]");
+  ) + "\n");
+  writeFileSync(join(root, "VERSION_HISTORY.md"), "# History updated\n");
+  git(root, "add", "version-history.json", "VERSION_HISTORY.md");
+  git(root, "commit", "-m", "chore(version): update generated history");
   const after = git(root, "rev-parse", "HEAD");
   assert.match(simulate(root, before, after), /Nenhuma versão gerada/);
 });
