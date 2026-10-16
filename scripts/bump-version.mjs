@@ -186,7 +186,7 @@ function publish(kind, changes, title, dryRun) {
   const now = new Date();
   const entry = {
     version: nextVersion(history[0].version, kind),
-    date: now.toLocaleDateString("sv-SE"), // AAAA-MM-DD no fuso local
+    date: now.toISOString().slice(0, 10), // AAAA-MM-DD em UTC, independente do fuso do runner
     timestamp: now.toISOString(),
     title: (title?.trim() || changes[0]).slice(0, 80),
     changes,
