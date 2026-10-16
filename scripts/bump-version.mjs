@@ -157,7 +157,7 @@ function classify(message, sha) {
   const body = rest.join("\n");
   const m = /^(\w+)(\([^)]*\))?(!)?:\s*(.+)$/.exec(subject);
   const type = m ? m[1].toLowerCase() : null;
-  const breaking = Boolean(m?.[3]) || /^BREAKING[ -]CHANGE:/m.test(body);
+  const breaking = Boolean(m?.[3]) || /^BREAKING[ -]CHANGE:/m.test(message);
   const kind = breaking ? "major" : type === "feat" ? "minor" : "patch";
   let text = capitalize((m ? m[4] : subject).trim());
   if (text.length < MIN_LEN || isGeneric(text)) {
@@ -219,9 +219,8 @@ if (mode === "check") {
   // --after limita o intervalo ao push que disparou o workflow (padrão: HEAD).
   const after = validSha(opts.after) ? opts.after : "HEAD";
   const files = changedFiles(opts.before, after);
-  if (files) {
-    if (files.includes("version-history.json")) skip("o histórico já foi alterado neste push.");
-    if (!files.some((f) => APP_PATHS.some((p) => f.startsWith(p)))) skip("nenhum arquivo do app mudou.");
+  if (files && !files.some((f) => APP_PATHS.some((p) => f.startsWith(p)))) {
+    skip("nenhum arquivo do app mudou desde a última versão.");
   }
   let headSha = "desconhecido";
   try {
