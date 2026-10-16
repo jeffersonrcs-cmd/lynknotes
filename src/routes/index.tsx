@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useRef, useState, type TouchEvent } from 'react';
-import { Plus, Search, LockKeyhole, Folder, MoreHorizontal, StickyNote, ListTodo, Bell, Pencil, Bookmark, UserRound, Moon, Sun, Settings2, Check, Pin, Archive, Trash2, RotateCcw, X } from 'lucide-react';
+import { ChevronLeft, Plus, Search, LockKeyhole, Folder, MoreHorizontal, StickyNote, ListTodo, Bell, Pencil, Bookmark, UserRound, Moon, Sun, Settings2, Check, Pin, Archive, Trash2, RotateCcw, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
