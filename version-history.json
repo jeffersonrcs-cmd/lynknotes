@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.56",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T12:52:11.799Z",
+    "title": "Cover automatic semantic versioning",
+    "changes": [
+      "Cover automatic semantic versioning"
+    ]
+  },
+  {
     "version": "1.0.55",
     "date": "2026-10-16",
     "timestamp": "2026-10-16T12:52:01.152Z",
