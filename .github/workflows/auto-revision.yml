@@ -45,8 +45,10 @@ jobs:
           bun-version: latest
       - name: Install dependencies
         run: bun install --no-save
-      - name: Run versioning tests
+      - name: Run application tests
         run: bun run test
+      - name: Run dedicated versioning tests
+        run: bun run test:versioning
       - name: Validate current version and history
         run: node scripts/bump-version.mjs check
       - name: Calculate and validate semantic version
