@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.0.57",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T13:05:58.742Z",
+    "title": "Align semantic versioning behavior and tests",
+    "changes": [
+      "Align semantic versioning behavior and tests",
+      "Install locked dependencies before tests",
+      "Install dependencies without changing lockfile"
+    ]
+  },
+  {
     "version": "1.0.56",
     "date": "2026-10-16",
     "timestamp": "2026-10-16T12:52:11.799Z",

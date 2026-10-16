@@ -2,6 +2,12 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.57 (2026-10-16)
+
+- Align semantic versioning behavior and tests
+- Install locked dependencies before tests
+- Install dependencies without changing lockfile
+
 ## v1.0.56 (2026-10-16)
 
 - Cover automatic semantic versioning
@@ -345,3 +351,10 @@ Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNote
 
 - Criado versionamento semântico independente e histórico de versões em JSON e Markdown.
 - Adicionada área no aplicativo para consultar a versão atual e o histórico de evolução.
+
+## Regras de versionamento
+
+- Correção ou ajuste: incrementa PATCH.
+- Nova funcionalidade: incrementa MINOR.
+- Mudança incompatível: incrementa MAJOR.
+- Se houver mais de um tipo de alteração, prevalece o incremento de maior impacto.
