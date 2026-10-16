@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.53",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T10:51:26.872Z",
+    "title": "Import missing ChevronLeft icon",
+    "changes": [
+      "Import missing ChevronLeft icon"
+    ]
+  },
+  {
     "version": "1.0.52",
     "date": "2026-10-15",
     "title": "Atualização do LynkNotes",

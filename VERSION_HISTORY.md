@@ -2,6 +2,10 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.53 (2026-10-16)
+
+- Import missing ChevronLeft icon
+
 ## v1.0.52 (2026-10-15)
 
 **Atualização do LynkNotes**
