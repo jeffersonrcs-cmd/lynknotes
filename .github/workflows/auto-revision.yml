@@ -40,6 +40,8 @@ jobs:
           fi
           echo "before=$BEFORE" >> "$GITHUB_OUTPUT"
           echo "after=$AFTER" >> "$GITHUB_OUTPUT"
+      - name: Run versioning tests
+        run: npm test
       - name: Validate current version and history
         run: node scripts/bump-version.mjs check
       - name: Calculate and validate semantic version

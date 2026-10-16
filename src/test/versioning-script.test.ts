@@ -74,6 +74,22 @@ describe("automatic semantic versioning", () => {
     expect(output).toContain("Add note search");
   });
 
+  it("ignores commits that only change generated history artifacts", () => {
+    const { root, before } = fixture("chore(version): update generated history", "version-history.json");
+    writeFileSync(
+      join(root, "version-history.json"),
+      JSON.stringify(
+        [{ version: "1.0.0", date: "2026-01-01", title: "Initial", changes: ["Initial version established"] }],
+        null,
+        2,
+      ) + "\n",
+    );
+    git(root, "add", "version-history.json");
+    git(root, "commit", "-m", "chore(version): update generated history [skip ci]");
+    const after = git(root, "rev-parse", "HEAD");
+    expect(simulate(root, before, after)).toContain("Nenhuma versão gerada");
+  });
+
   it("increments MAJOR for a breaking change", () => {
     const { root, before, after } = fixture("feat(api)!: change note schema", "src/schema.ts");
     const output = simulate(root, before, after);

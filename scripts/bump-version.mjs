@@ -48,7 +48,7 @@ const parseVersion = (v) => {
   return m ? m.slice(1).map(Number) : null;
 };
 const isGeneric = (text) => PLACEHOLDERS.some((re) => re.test(text));
-const capitalize = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
+const capitalize = (s) => (s ? s[0].toLocaleUpperCase("pt-BR") + s.slice(1) : s);
 
 // Mais nova primeiro.
 const compareDesc = (a, b) => {
@@ -100,6 +100,13 @@ function renderMarkdown(history) {
     for (const c of e.changes) lines.push(`- ${c}`);
     lines.push("");
   }
+  lines.push(
+    "## Regras de versionamento", "",
+    "- Correção ou ajuste: incrementa PATCH.",
+    "- Nova funcionalidade: incrementa MINOR.",
+    "- Mudança incompatível: incrementa MAJOR.",
+    "- Se houver mais de um tipo de alteração, prevalece o incremento de maior impacto.", ""
+  );
   return lines.join("\n");
 }
 
@@ -201,6 +208,9 @@ function loadValidated() {
 function publish(kind, changes, title, dryRun) {
   const { history, pkg, errors } = loadValidated();
   if (errors.length) fail("o versionamento tem problemas; corrija antes de gerar nova versão:\n- " + errors.join("\n- "));
+  for (const change of changes) {
+    if (change.length < MIN_LEN || isGeneric(change)) fail(`descrição de alteração genérica ou curta demais: "${change}"`);
+  }
   const now = new Date();
   const entry = {
     version: nextVersion(history[0].version, kind),

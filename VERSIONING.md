@@ -11,9 +11,11 @@ O LynkNotes usa versionamento semântico **MAJOR.MINOR.PATCH**. O sistema não u
 
 ## Detecção automática
 
-O script analisa alterações em todo o repositório, incluindo código, arquivos de configuração, testes e workflows. Alterações relevantes fora de `src/` também podem gerar uma nova versão.
+O script analisa alterações em todo o repositório, incluindo código, arquivos de configuração, testes e workflows. Alterações relevantes em qualquer área do repositório também podem gerar uma nova versão.
 
 Os arquivos `version-history.json`, `VERSION_HISTORY.md` e `public/version-history.json` são artefatos de histórico gerados automaticamente e não geram outra versão por si só.
+
+Cada nova entrada de histórico registra a data em UTC e o instante ISO 8601 (`timestamp`). Entradas históricas antigas podem não conter esse campo.
 
 O histórico público deve descrever as alterações reais. Evite mensagens genéricas como “manutenção e melhorias internas”; prefira mensagens de commit específicas, por exemplo `fix(notes): correct note ordering` ou `feat(search): add note search`.
 
@@ -22,5 +24,7 @@ O histórico público deve descrever as alterações reais. Evite mensagens gen�
 - `npm run version:patch` — incrementa PATCH.
 - `npm run version:minor` — incrementa MINOR e zera PATCH.
 - `npm run version:major` — incrementa MAJOR e zera MINOR e PATCH.
+- `npm run version:check` — verifica consistência entre versão e histórico.
+- `npm test` — executa os testes do script de versionamento.
 
 O histórico e o campo `version` do `package.json` são atualizados pelo script. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
