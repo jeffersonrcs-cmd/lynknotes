@@ -78,7 +78,7 @@ test("históricos gerados não disparam uma nova versão", () => {
   const { root, before } = fixture([["chore: initial fixture", "generated"]]);
   writeFileSync(join(root, "version-history.json"), JSON.stringify(
     [{ version: "1.0.0", date: "2026-01-01", title: "Initial", changes: ["Initial version established"] }], null, 2,
-  ) + "\n");
+  ) + "\n ");
   git(root, "add", "version-history.json");
   git(root, "commit", "-m", "chore(version): update generated history [skip ci]");
   const after = git(root, "rev-parse", "HEAD");
