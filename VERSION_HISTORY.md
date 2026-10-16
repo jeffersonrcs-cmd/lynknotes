@@ -2,6 +2,10 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.55 (2026-10-16)
+
+- Document semantic versioning rules
+
 ## v1.0.54 (2026-10-16)
 
 - Run Pages deployment after version workflow

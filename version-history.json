@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.55",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T12:52:01.152Z",
+    "title": "Document semantic versioning rules",
+    "changes": [
+      "Document semantic versioning rules"
+    ]
+  },
+  {
     "version": "1.0.54",
     "date": "2026-10-16",
     "timestamp": "2026-10-16T12:51:47.659Z",
