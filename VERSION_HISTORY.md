@@ -2,6 +2,10 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do portal RangelLab e dos demais aplicativos conectados.
 
+## v1.0.62 (2026-10-17)
+
+- Ajuste login
+
 ## v1.0.61 (2026-10-17)
 
 - Atualiza integração para o portal RangelLab
