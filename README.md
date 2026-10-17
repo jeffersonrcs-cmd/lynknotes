@@ -1,6 +1,6 @@
 # LynkNotes
 
-LynkNotes é um espaço pessoal para notas coloridas, checklists, lembretes, desenhos e favoritos. O projeto utiliza React, TanStack Start e Supabase para autenticação e armazenamento privado das notas.
+LynkNotes é um espaço pessoal para notas coloridas, checklists, lembretes, desenhos e favoritos. O projeto utiliza React, TanStack Start e Supabase para autenticação e armazenamento privado das notas; as contas são gerenciadas pelo portal RangelLab.
 
 ## Desenvolvimento
 

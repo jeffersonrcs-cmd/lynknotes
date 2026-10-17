@@ -25,7 +25,7 @@ const PLACEHOLDERS = [
   /ajustes e correções registrados/i,
 ];
 const INTRO =
-  "Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.";
+  "Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do portal RangelLab e dos demais aplicativos conectados.";
 const RANK = { patch: 0, minor: 1, major: 2 };
 
 const USAGE = `Uso:

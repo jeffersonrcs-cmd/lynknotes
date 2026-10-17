@@ -1,6 +1,6 @@
 # Histórico de versões do LynkNotes
 
-Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
+Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do portal RangelLab e dos demais aplicativos conectados.
 
 ## v1.0.60 (2026-10-17)
 

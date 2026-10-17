@@ -27,4 +27,4 @@ O histórico público deve descrever as alterações reais. Evite mensagens gen�
 - `npm run version:check` — verifica consistência entre versão e histórico.
 - `npm test` — executa os testes do script de versionamento.
 
-O histórico e o campo `version` do `package.json` são atualizados pelo script. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
+O histórico e o campo `version` do `package.json` são atualizados pelo script. A versão do LynkNotes é independente da versão do portal RangelLab e dos demais aplicativos conectados.
