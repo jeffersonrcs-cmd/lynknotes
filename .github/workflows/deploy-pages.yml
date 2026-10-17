@@ -22,7 +22,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && !contains(github.event.workflow_run.head_commit.message, '[skip ci]'))
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger deployment in JSLynk/lynknotes
+      - name: Trigger deployment in RangelLab/lynknotes
         env:
           GH_TOKEN: ${{ secrets.LYNKNOTES_PAGES_DEPLOY_TOKEN }}
         run: |
@@ -30,7 +30,7 @@ jobs:
           test -n "$GH_TOKEN"
           curl --fail-with-body --silent --show-error \
             --request POST \
-            --url https://api.github.com/repos/JSLynk/lynknotes/dispatches \
+            --url https://api.github.com/repos/RangelLab/lynknotes/dispatches \
             --header "Accept: application/vnd.github+json" \
             --header "Authorization: Bearer $GH_TOKEN" \
             --header "X-GitHub-Api-Version: 2022-11-28" \
