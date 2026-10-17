@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.63",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T19:03:35.280Z",
+    "title": "Add PNG icons for PWA installs",
+    "changes": [
+      "Add PNG icons for PWA installs"
+    ]
+  },
+  {
     "version": "1.0.62",
     "date": "2026-10-17",
     "timestamp": "2026-10-17T17:11:21.427Z",
