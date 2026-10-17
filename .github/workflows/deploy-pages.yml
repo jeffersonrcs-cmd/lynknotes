@@ -1,6 +1,9 @@
 name: Trigger LynkNotes GitHub Pages deployment
 
 on:
+  push:
+    branches:
+      - main
   workflow_run:
     workflows:
       - Automatic semantic version
