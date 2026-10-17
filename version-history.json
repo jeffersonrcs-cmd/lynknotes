@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.60",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T12:17:53.931Z",
+    "title": "Run LynkNotes Pages deployment on main updates",
+    "changes": [
+      "Run LynkNotes Pages deployment on main updates"
+    ]
+  },
+  {
     "version": "1.0.59",
     "date": "2026-10-17",
     "timestamp": "2026-10-17T12:17:08.220Z",

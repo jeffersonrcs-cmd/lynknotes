@@ -2,6 +2,10 @@
 
 Este arquivo registra as versões publicadas do LynkNotes. A versão do LynkNotes é independente da versão do JSLynk e dos demais aplicativos conectados.
 
+## v1.0.60 (2026-10-17)
+
+- Run LynkNotes Pages deployment on main updates
+
 ## v1.0.59 (2026-10-17)
 
 - Trigger LynkNotes deployment in RangelLab repository
