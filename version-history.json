@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.59",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T12:17:08.220Z",
+    "title": "Trigger LynkNotes deployment in RangelLab repository",
+    "changes": [
+      "Trigger LynkNotes deployment in RangelLab repository"
+    ]
+  },
+  {
     "version": "1.0.58",
     "date": "2026-10-16",
     "timestamp": "2026-10-16T14:46:18.188Z",
