@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.62",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T17:11:21.427Z",
+    "title": "Ajuste login",
+    "changes": [
+      "Ajuste login"
+    ]
+  },
+  {
     "version": "1.0.61",
     "date": "2026-10-17",
     "timestamp": "2026-10-17T16:55:46.677Z",
