@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.61",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T16:55:46.677Z",
+    "title": "Atualiza integração para o portal RangelLab",
+    "changes": [
+      "Atualiza integração para o portal RangelLab"
+    ]
+  },
+  {
     "version": "1.0.60",
     "date": "2026-10-17",
     "timestamp": "2026-10-17T12:17:53.931Z",
